@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Outfit Idea Generator</title>
+
+    <style>
+        /* PAGE LAYOUT SETTINGS (keeps footer at bottom) */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        /* COLOR VARIABLES */
+        :root {
+            --bg: #cbe3ff;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --accent: #0ea5e9;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* BASIC PAGE STYLING */
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        /* CONTAINER FOR PAGE CONTENT */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* HEADER (STICKY WHITE BAR AT TOP) */
+        header {
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(6px);
+            background: rgba(255, 255, 255, 0.7);
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* GRID STRUCTURE FOR MAIN PAGE */
+        .row {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1.4fr 1fr;
+            align-items: start;
+        }
+
+        /* MOBILE LAYOUT ADJUSTMENTS */
+        @media (max-width: 900px) {
+            .row {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* CARD STYLING (WHITE BOXES) */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+        }
+
+        .card h2 {
+            margin: 0 0 .5rem;
+            font-size: 1rem;
+        }
+
+        .card .body {
+            padding: 1.5rem;
+        }
+
+        /* PAGE TITLE BAR */
+        .title-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .75rem;
+            padding: .85rem 0;
+        }
+
+        /* SECTION CONTAINING ICON AND PREFERENCES BOX */
+        .pref-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+        }
+
+        /* FLOATING WEATHER ICON */
+        .pref-section img {
+            width: 400px;
+            height: auto;
+            flex-shrink: 0;
+            animation: float 4s ease-in-out infinite;
+            position: absolute;
+            left: -400px;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(-10px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* MOBILE ADJUSTMENTS FOR ICON */
+        @media (max-width: 900px) {
+            .pref-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pref-section img {
+                position: static;
+                margin-bottom: .5rem;
+                left: 0;
+            }
+        }
+
+        /* SMALL TEXT + LABELS */
+        .muted {
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        label {
+            font-size: .9rem;
+        }
+
+        /* INPUT FIELDS AND SELECT DROPDOWN */
+        input[type="text"],
+        input[type="time"],
+        select {
+            width: 100%;
+            padding: .65rem .7rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            outline: none;
+        }
+
+        input[type="text"]:focus,
+        input[type="time"]:focus,
+        select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, .15);
+        }
+
+        /* TWO-COLUMN GRID FOR INPUTS (TIME AND PRESET) */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .5rem;
+        }
+
+        /* CHECKBOXES FOR GENRES */
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .6rem .7rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checkbox:hover {
+            background: #f8fafc;
+        }
+
+        /* BUTTON STYLES */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .4rem;
+            padding: .7rem 1rem;
+            border: 1px solid var(--border);
+            background: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .btn.primary {
+            background: var(--text);
+            color: #fff;
+            border-color: var(--text);
+        }
+
+        .btn:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+        /* GRID FOR OUTFIT RESULTS */
+        .outfits-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .outfits-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* SMALL TAG STYLE USED FOR OUTFIT LABELS */
+        .tag {
+            display: inline-block;
+            padding: .25rem .6rem;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            font-size: .75rem;
+        }
+
+        /* WHITE FOOTER BAR AT BOTTOM */
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: .8rem;
+            padding: 2rem 0;
+            background: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid var(--border);
+            backdrop-filter: blur(6px);
+        }
+    </style>
+</head>
+
+<body>
+    <!--PAGE HEADER-->
+    <header>
+        <div class="container title-wrap">
+            <h1 style="margin:0; font-size:1.5rem;">Outfit Idea Generator</h1>
+        </div>
+    </header>
+
+    <!--MAIN PAGE CONTENT-->
+    <main class="container" style="padding:1.25rem 1rem 2rem;">
+        <div class="row">
+            <!--LEFT SIDE: WEATHER ICON AND PREFERENCES BOX-->
+            <div class="pref-section">
+                <img src="partly-cloudy-day.svg" alt="Partly Cloudy Icon">
+                <section class="card" style="flex:1;">
+                    <div class="body">
+                        <h2>Your Preferences</h2>
+                        <form id="prefsForm">
+                            <!--ZIPCODE INPUT-->
+                            <div style="margin:.9rem 0;">
+                                <label for="zipcode">Zipcode</label>
+                                <input id="zipcode" name="zipcode" type="text" placeholder="e.g., 40506" required>
+                                <div class="muted" style="margin-top:.25rem;">Uses API for zipcode.</div>
+                            </div>
+
+                            <!--TIME INPUT AND PRESET DROPDOWN-->
+                            <div style="margin:.9rem 0;">
+                                <label for="time">What time are you going out today?</label>
+                                <div class="grid-2" style="margin-top:.35rem;">
+                                    <input id="time" name="time" type="time" required>
+                                    <select id="timePreset">
+                                        <option value="" selected disabled>Select time</option>
+                                        <option value="morning">Morning</option>
+                                        <option value="afternoon">Afternoon</option>
+                                        <option value="evening">Evening</option>
+                                        <option value="late">Late Night</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--GENRE CHECKBOXES-->
+                            <fieldset style="margin:1rem 0;">
+                                <legend>Genres</legend>
+                                <div class="grid-2" style="margin-top:.35rem;">
+                                    <label class="checkbox"><input type="checkbox" value="comfy"> Comfy</label>
+                                    <label class="checkbox"><input type="checkbox" value="fancy"> Fancy</label>
+                                    <label class="checkbox"><input type="checkbox" value="casual"> Casual</label>
+                                    <label class="checkbox"><input type="checkbox" value="feminine"> Feminine</label>
+                                    <label class="checkbox"><input type="checkbox" value="masculine"> Masculine</label>
+                                    <label class="checkbox"><input type="checkbox" value="neutral"> Gender
+                                        Neutral</label>
+                                </div>
+                            </fieldset>
+
+                            <!--SUBMIT BUTTON-->
+                            <button type="submit" class="btn primary" style="width:100%;">Submit</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+
+            <!--RIGHT SIDE: GENERATED OUTFIT RESULTS-->
+            <section>
+                <div class="title-wrap" style="padding:0;">
+                    <h2 style="margin:0; font-size:1rem;">Suggested Outfits:</h2>
+                </div>
+
+                <!--AREA WHERE OUTFIT CARDS WILL DISPLAY-->
+                <div id="resultsArea" class="outfits-grid" style="margin-top:1rem;"></div>
+
+                <!--REGENERATE BUTTON FOR NEW OUTFIT IDEAS-->
+                <div style="margin-top:.75rem; display:flex; gap:.5rem;">
+                    <button id="regenBtnBottom" class="btn" disabled>⟳ Regenerate</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!--SCRIPT HANDLES FORM + BUTTON LOGIC-->
+    <script>
+        const prefsForm = document.getElementById('prefsForm');
+        const resultsArea = document.getElementById('resultsArea');
+        const regenBtnBottom = document.getElementById('regenBtnBottom');
+
+        // When user submits the form
+        prefsForm.addEventListener('submit', e => {
+            e.preventDefault();
+            regenBtnBottom.disabled = false;
+            clearResults();
+            showWaitingState();
+        });
+
+        // Handles "Regenerate" click
+        function handleRegenerate() { clearResults(); showWaitingState(); }
+        regenBtnBottom.addEventListener('click', handleRegenerate);
+
+        // Clears existing outfits
+        function clearResults() { resultsArea.innerHTML = ''; }
+
+        // Placeholder message until outfit results load
+        function showWaitingState() {
+            const card = document.createElement('article');
+            card.className = 'card';
+            card.innerHTML = `<div class="body"><h3>Waiting on generator</h3><p class="muted">We sent your preferences. When results arrive, they'll render here.</p></div>`;
+            resultsArea.appendChild(card);
+        }
+    </script>
+</body>
+
+<!--FOOTER SECTION WITH TEAM NAMES-->
+<footer>
+    Created for CS498 Project: Lauren Hayes, Anthony Arnold, Dayne Freudenberg, Daniel Howard, Ari Ramundo
+</footer>
+
+</html>
