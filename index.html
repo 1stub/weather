@@ -333,32 +333,95 @@
         </div>
     </main>
 
+    <!-- We need API key to use google maps :( -->
+    <script src="https://maps.google.com/maps/api/js"></script>
+
     <!--SCRIPT HANDLES FORM + BUTTON LOGIC-->
     <script>
         const prefsForm = document.getElementById('prefsForm');
         const resultsArea = document.getElementById('resultsArea');
         const regenBtnBottom = document.getElementById('regenBtnBottom');
+        const zipcodeField = document.getElementById('zipcode');
 
         // When user submits the form
         prefsForm.addEventListener('submit', e => {
             e.preventDefault();
             regenBtnBottom.disabled = false;
             clearResults();
+
+            fetchWeatherForecast();
+            
             showWaitingState();
         });
 
-        // Handles "Regenerate" click
-        function handleRegenerate() { clearResults(); showWaitingState(); }
         regenBtnBottom.addEventListener('click', handleRegenerate);
 
+        // Handles "Regenerate" click
+        function handleRegenerate() { 
+            clearResults(); 
+            showWaitingState(); 
+        }
+        
         // Clears existing outfits
-        function clearResults() { resultsArea.innerHTML = ''; }
+        function clearResults() { 
+            resultsArea.innerHTML = ''; 
+        }
+
+        //
+        // NOTE: Our zipcodes are _specific_ to north america, international
+        // zipcodes will fail (see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+        //
+        function getLatLngByZipcode(zipcode) {
+            //https://stackoverflow.com/a/56511995/21400811 
+            var geocoder = new google.maps.Geocoder();
+            var address = zipcode;
+            var latitude, longitude;
+            geocoder.geocode({ 'address': 'zipcode '+ address }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    latitude = results[0].geometry.location.lat();
+                    longitude = results[0].geometry.location.lng();
+                    alert("Latitude: " + latitude + "\nLongitude: " + longitude);
+                } 
+                else {
+                    alert("Request failed.")
+                }
+            });
+            return [latitude, longitude];
+        }
+
+        function convertZipCodeToCoordinates() {
+            let zip = zipcodeField.value;
+            let latitude, longitude = getLatLngByZipcode(zip);
+
+            return latitude, longitude;
+        }
+
+        function getWeatherFromLatLng(latitude, longitude) {
+            var json;
+            fetch( 'https://forecast.weather.gov/MapClick.php?lat=' + latitude + '&lon=' + longitude + '&unit=0&lg=english&FcstType=json' )
+                .then( async response => {
+                    json = await response.json();
+            });
+
+            return json;
+        }
+
+        function fetchWeatherForecast() {
+            let latitude, longitude = convertZipCodeToCoordinates();
+            let weather = getWeatherFromLatLng(latitude, longitude);
+
+            console.log(weather);
+
+            return weather;
+        }
 
         // Placeholder message until outfit results load
         function showWaitingState() {
             const card = document.createElement('article');
             card.className = 'card';
-            card.innerHTML = `<div class="body"><h3>Waiting on generator</h3><p class="muted">We sent your preferences. When results arrive, they'll render here.</p></div>`;
+            card.innerHTML = `<div class="body"><h3>Waiting on generator</h3>
+                <p class="muted">We sent your preferences. When results arrive, 
+                    they'll render here.</p></div>`;
             resultsArea.appendChild(card);
         }
     </script>
