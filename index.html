@@ -341,13 +341,13 @@
         const zipcodeField = document.getElementById('zipcode');
 
         // When user submits the form
-        prefsForm.addEventListener('submit', e => {
+        prefsForm.addEventListener('submit', async e => {
             e.preventDefault();
             regenBtnBottom.disabled = false;
             clearResults();
 
-            fetchWeatherForecast();
-            
+            const weatherJSON = await fetchWeatherForecast();
+           
             showWaitingState();
         });
 
@@ -372,8 +372,6 @@
             try {
                 const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&postalcode=${zipcode}&countrycodes=us&limit=1`);
                 const data = await response.json();
-
-                console.log(data[0].lat);
 
                 if (data && data.length > 0) {
                     return {
@@ -417,8 +415,6 @@
         async function fetchWeatherForecast() {
             const coords = await convertZipCodeToCoordinates();
             const weather = await getWeatherFromLatLng(coords.latitude, coords.longitude);
-
-            console.log(weather)
 
             return weather;
         }
