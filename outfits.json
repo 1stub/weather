@@ -11,7 +11,8 @@
                 "max": 120
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 2,
@@ -24,7 +25,8 @@
                 "max": 65
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 3,
@@ -37,7 +39,8 @@
                 "max": 120
             },
             "wind": [true, false],
-            "rain": false
+            "rain": false,
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 4,
@@ -50,7 +53,8 @@
                 "max": 120
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 5,
@@ -63,7 +67,8 @@
                 "max": 65
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 6,
@@ -76,7 +81,8 @@
                 "max": 120
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 7,
@@ -89,7 +95,8 @@
                 "max": 65
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 8,
@@ -102,7 +109,8 @@
                 "max": 120
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 9,
@@ -115,7 +123,8 @@
                 "max": 65
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 10,
@@ -128,7 +137,8 @@
                 "max": 120
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 11,
@@ -141,7 +151,8 @@
                 "max": 65
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         }, 
         {
             "id": 12,
@@ -154,7 +165,8 @@
                 "max": 50
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 13,
@@ -167,7 +179,8 @@
                 "max": 50
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 14,
@@ -180,7 +193,8 @@
                 "max": 50
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 15,
@@ -193,7 +207,8 @@
                 "max": 68
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 16,
@@ -206,7 +221,8 @@
                 "max": 120
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 17,
@@ -219,7 +235,8 @@
                 "max": 65
             },
             "wind": [true, false],
-            "rain": [false]
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 18,
@@ -232,7 +249,8 @@
                 "max": 120
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 19,
@@ -245,7 +263,8 @@
                 "max": 120
             },
             "wind": [false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 20,
@@ -258,7 +277,8 @@
                 "max": 66
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 21,
@@ -271,7 +291,8 @@
                 "max": 80
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 22,
@@ -284,7 +305,8 @@
                 "max": 75
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 23,
@@ -297,7 +319,8 @@
                 "max": 80
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 24,
@@ -310,7 +333,8 @@
                 "max": 90
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 25,
@@ -323,7 +347,8 @@
                 "max": 80
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 26,
@@ -336,7 +361,8 @@
                 "max": 120
             },
             "wind": [false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 27,
@@ -349,7 +375,8 @@
                 "max": 85
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 28,
@@ -362,7 +389,8 @@
                 "max": 120
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 29,
@@ -375,7 +403,8 @@
                 "max": 120
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 30,
@@ -388,7 +417,8 @@
                 "max": 120
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 31,
@@ -401,7 +431,8 @@
                 "max": 40
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 32,
@@ -414,7 +445,8 @@
                 "max": 80
             },
             "wind": [true, false],
-            "rain": [true]
+            "rain": [true],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 33,
@@ -427,7 +459,8 @@
                 "max": 90
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 34,
@@ -440,7 +473,8 @@
                 "max": 100
             },
             "wind": [true, false],
-            "rain": [false]
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 35,
@@ -453,7 +487,8 @@
                 "max": 85
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 36,
@@ -466,7 +501,8 @@
                 "max": 90
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 37,
@@ -479,7 +515,8 @@
                 "max": 120
             },
             "wind": [true, false],
-            "rain": [false]
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 39,
@@ -492,7 +529,8 @@
                 "max": 60
             },
             "wind": [true, false],
-            "rain": [false]
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 40,
@@ -505,7 +543,8 @@
                 "max": 50
             },
             "wind": [true, false],
-            "rain": [false]
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 41,
@@ -518,7 +557,8 @@
                 "max": 120
             },
             "wind": [true, false],
-            "rain": [false]
+            "rain": [false],
+            "time": ["morning", "afternoon"]
         },
         {
             "id": 42,
@@ -531,7 +571,8 @@
                 "max": 120
             },
             "wind": [true, false],
-            "rain": [true]
+            "rain": [true],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 43,
@@ -544,7 +585,8 @@
                 "max": 90
             },
             "wind": [true, false],
-            "rain": [true]
+            "rain": [true],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 44,
@@ -557,7 +599,8 @@
                 "max": 85
             },
             "wind": [true, false],
-            "rain": [true]
+            "rain": [true],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 45,
@@ -570,7 +613,8 @@
                 "max": 40
             },
             "wind": [true, false],
-            "rain": [false]
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 46,
@@ -583,7 +627,8 @@
                 "max": 55
             },
             "wind": [true, false],
-            "rain": [false]
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 47,
@@ -596,7 +641,8 @@
                 "max": 50
             },
             "wind": [true, false],
-            "rain": [false]
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 48,
@@ -609,7 +655,8 @@
                 "max": 75
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 49,
@@ -622,7 +669,8 @@
                 "max": 30
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 50,
@@ -635,7 +683,8 @@
                 "max": 80
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 51,
@@ -648,7 +697,8 @@
                 "max": 80
             },
             "wind": [true, false],
-            "rain": [true]
+            "rain": [true],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 52,
@@ -661,7 +711,8 @@
                 "max": 75
             },
             "wind": [true, false],
-            "rain": [false]
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 53,
@@ -674,7 +725,8 @@
                 "max": 70
             },
             "wind": [true, false],
-            "rain": [false]
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 54,
@@ -687,7 +739,8 @@
                 "max": 80
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 55,
@@ -700,7 +753,8 @@
                 "max": 50
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 56,
@@ -713,7 +767,8 @@
                 "max": 45
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 57,
@@ -726,7 +781,8 @@
                 "max": 70
             },
             "wind": [true, false],
-            "rain": [true, false]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 58,
@@ -739,7 +795,8 @@
                 "max": 60
             },
             "wind": [true, false],
-            "rain": [false]
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening"]
         }
     ]
 }
