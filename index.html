@@ -173,13 +173,6 @@
             box-shadow: 0 0 0 3px rgba(14, 165, 233, .15);
         }
 
-        /* TWO-COLUMN GRID FOR INPUTS (TIME AND PRESET) */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: .5rem;
-        }
-
         /* CHECKBOXES FOR GENRES */
         .checkbox {
             display: flex;
@@ -280,19 +273,16 @@
                                 <div class="muted" style="margin-top:.25rem;">Uses API for zipcode.</div>
                             </div>
 
-                            <!--TIME INPUT AND PRESET DROPDOWN-->
+                            <!--TIME PRESET DROPDOWN ONLY-->
                             <div style="margin:.9rem 0;">
-                                <label for="time">What time are you going out today?</label>
-                                <div class="grid-2" style="margin-top:.35rem;">
-                                    <input id="time" name="time" type="time" required>
-                                    <select id="timePreset">
-                                        <option value="" selected disabled>Select time</option>
-                                        <option value="morning">Morning</option>
-                                        <option value="afternoon">Afternoon</option>
-                                        <option value="evening">Evening</option>
-                                        <option value="late">Late Night</option>
-                                    </select>
-                                </div>
+                                <label for="timePreset">What time are you going out today?</label>
+                                <select id="timePreset" style="margin-top:.35rem;">
+                                    <option value="" selected disabled>Select time</option>
+                                    <option value="morning">Morning</option>
+                                    <option value="afternoon">Afternoon</option>
+                                    <option value="evening">Evening</option>
+                                    <option value="late">Late Night</option>
+                                </select>
                             </div>
 
                             <!--GENRE CHECKBOXES-->
@@ -347,21 +337,21 @@
             clearResults();
 
             const weatherJSON = await fetchWeatherForecast();
-           
+
             showWaitingState();
         });
 
         regenBtnBottom.addEventListener('click', handleRegenerate);
 
         // Handles "Regenerate" click
-        function handleRegenerate() { 
-            clearResults(); 
-            showWaitingState(); 
+        function handleRegenerate() {
+            clearResults();
+            showWaitingState();
         }
-        
+
         // Clears existing outfits
-        function clearResults() { 
-            resultsArea.innerHTML = ''; 
+        function clearResults() {
+            resultsArea.innerHTML = '';
         }
 
         //
@@ -378,11 +368,11 @@
                         latitude: parseFloat(data[0].lat),
                         longitude: parseFloat(data[0].lon)
                     };
-                } 
+                }
                 else {
                     throw new Error('Zip code not found');
                 }
-            } 
+            }
             catch (error) {
                 console.error('Geocoding error:', error);
                 return null;
@@ -398,14 +388,14 @@
         async function getWeatherFromLatLng(latitude, longitude) {
             try {
                 const response = await fetch(`https://forecast.weather.gov/MapClick.php?lat=${latitude}&lon=${longitude}&unit=0&lg=english&FcstType=json`);
-                
+
                 if (!response.ok) {
                     throw new Error('Weather API response was not ok');
                 }
-                
+
                 const json = await response.json();
                 return json;
-            } 
+            }
             catch (error) {
                 console.error('Error fetching weather:', error);
                 return null;
