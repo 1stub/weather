@@ -246,6 +246,8 @@
             backdrop-filter: blur(6px);
         }
     </style>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.10.3/core.css">
+    <script type="module" src="https://pyscript.net/releases/2025.10.3/core.js"></script>
 </head>
 
 <body>
@@ -329,7 +331,8 @@
         const resultsArea = document.getElementById('resultsArea');
         const regenBtnBottom = document.getElementById('regenBtnBottom');
         const zipcodeField = document.getElementById('zipcode');
-
+        const timePresetField = document.getElementById('timePreset');
+        
         // When user submits the form
         prefsForm.addEventListener('submit', async e => {
             e.preventDefault();
@@ -337,8 +340,20 @@
             clearResults();
 
             const weatherJSON = await fetchWeatherForecast();
+            const catalogJSON = await fetchCatalog();
 
             showWaitingState();
+
+            const checkedGenres = document.querySelectorAll('input[type="checkbox"]:checked');
+            const outfit = window.generate_outfit(weatherJSON, catalogJSON, timePresetField.value, checkedGenres);
+            resultsArea.innerHTML = `<div class="body"><h3>Results:</h3>
+                <list class="text">
+                    <li>Top: ${outfit['top']}</li>
+                    <li>Bottom: ${outfit['bottom']}</li>
+                    <li>Outerwear: ${outfit['full-body']}</li>
+                    <li>Footwear: ${outfit['shoes']}</li>
+                    <li>Accessories: ${outfit['weather-specific']}</li>
+                </list></div>`;
         });
 
         regenBtnBottom.addEventListener('click', handleRegenerate);
@@ -409,6 +424,17 @@
             return weather;
         }
 
+        async function fetchCatalog() {
+            const response = await fetch('outfits.json');
+
+            if (!response.ok) {
+                throw new Error('Could not find catalog');
+            }
+
+            const catalog = await response.json();
+            return catalog;
+        }
+
         // Placeholder message until outfit results load
         function showWaitingState() {
             const card = document.createElement('article');
@@ -419,6 +445,31 @@
             resultsArea.appendChild(card);
         }
     </script>
+    <py-script>
+        from pyscript import window
+
+        def generate_outfit(weather, catalog, time, genres):
+            # TODO: Weather API only gives forecast in 12 hour intervals, follow up with team
+            now = datetime.now().astimezone()
+            if time == "morning":
+                iso = now.replace(hour=8, minute=0, second=0, microsecond=0).isoformat()
+            elif time == "afternoon":
+                iso = now.replace(hour=12, minute=0, second=0, microsecond=0).isoformat()
+            elif time == "evening":
+                iso = now.replace(hour=17, minute=0, second=0, microsecond=0).isoformat()
+            elif time == "late":
+                iso = now.replace(hour=20, minute=0, second=0, microsecond=0).isoformat()
+
+            conditions = preprocess_weather_data(weather.to_py(), iso)
+
+            outfits_df = preprocess_outfits_data(catalog.to_py())
+
+            genres_list = [genre.value for genre in genres]
+            return recommend_outfit(conditions, outfits_df, genres_list)
+
+        window.generate_outfit = generate_outfit
+    </py-script>
+    <script type="py" src="./generator.py" config='{"packages": ["pandas"]}'></script>
 </body>
 
 <!--FOOTER SECTION WITH TEAM NAMES-->
