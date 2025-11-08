@@ -338,12 +338,26 @@
             e.preventDefault();
             regenBtnBottom.disabled = false;
             clearResults();
+            getResults();
+        });
 
+        regenBtnBottom.addEventListener('click', handleRegenerate);
+
+        // Handles "Regenerate" click
+        function handleRegenerate() {
+            clearResults();
+            getResults();
+        }
+
+        // Clears existing outfits
+        function clearResults() {
+            resultsArea.innerHTML = '';
+        }
+
+        async function getResults() {
+            showWaitingState();
             const weatherJSON = await fetchWeatherForecast();
             const catalogJSON = await fetchCatalog();
-
-            showWaitingState();
-
             const checkedGenres = document.querySelectorAll('input[type="checkbox"]:checked');
             const outfit = window.generate_outfit(weatherJSON, catalogJSON, timePresetField.value, checkedGenres);
             resultsArea.innerHTML = `<div class="body"><h3>Results:</h3>
@@ -354,19 +368,6 @@
                     <li>Footwear: ${outfit['shoes']}</li>
                     <li>Accessories: ${outfit['weather-specific']}</li>
                 </list></div>`;
-        });
-
-        regenBtnBottom.addEventListener('click', handleRegenerate);
-
-        // Handles "Regenerate" click
-        function handleRegenerate() {
-            clearResults();
-            showWaitingState();
-        }
-
-        // Clears existing outfits
-        function clearResults() {
-            resultsArea.innerHTML = '';
         }
 
         //
