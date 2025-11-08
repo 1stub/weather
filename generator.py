@@ -1,8 +1,6 @@
-import json
 import pandas as pd
-import random
 import re
-from datetime import datetime, timezone
+from datetime import datetime
 
 def preprocess_weather_data(weather_data: dict, user_time_str: str) -> dict:
     try:
@@ -12,7 +10,7 @@ def preprocess_weather_data(weather_data: dict, user_time_str: str) -> dict:
             datetime.fromisoformat(t) 
             for t in weather_data['time']['startValidTime']
         ]
-        
+
         user_dt = datetime.fromisoformat(user_time_str)
         
         # finds the latest period that starts before or at user_dt
@@ -156,40 +154,40 @@ def recommend_outfit(
 
     return final_outfit
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     
-    # user inputs
-    USER_TIME_INPUT = "2025-11-05T14:00:00-05:00"
-    USER_GENRE_INPUT = ["Casual", "Masculine"] 
-    # end
+#     # user inputs
+#     USER_TIME_INPUT = "2025-11-05T14:00:00-05:00"
+#     USER_GENRE_INPUT = ["Casual", "Masculine"] 
+#     # end
     
-    try:
-        with open('weather.json', 'r') as f:
-            weather_data = json.load(f)
+#     try:
+#         with open('weather.json', 'r') as f:
+#             weather_data = json.load(f)
         
-        with open('outfits.json', 'r') as f:
-            outfits_data = json.load(f)
+#         with open('outfits.json', 'r') as f:
+#             outfits_data = json.load(f)
             
-    except FileNotFoundError as e:
-        print(f"Error: {e}. Make sure weather.json and outfits.json are in the same directory.")
-        exit()
+#     except FileNotFoundError as e:
+#         print(f"Error: {e}. Make sure weather.json and outfits.json are in the same directory.")
+#         exit()
         
-    print(f"processing weather for user time {USER_TIME_INPUT}...")
-    conditions = preprocess_weather_data(weather_data, USER_TIME_INPUT)
-    print(f"Weather conditions for '{conditions.get('period_name')}': {conditions}")
+#     print(f"processing weather for user time {USER_TIME_INPUT}...")
+#     conditions = preprocess_weather_data(weather_data, USER_TIME_INPUT)
+#     print(f"Weather conditions for '{conditions.get('period_name')}': {conditions}")
     
-    print("\nprocessing outfit database ")
-    outfits_df = preprocess_outfits_data(outfits_data)
-    print(f"{len(outfits_df)} outfit items ")
+#     print("\nprocessing outfit database ")
+#     outfits_df = preprocess_outfits_data(outfits_data)
+#     print(f"{len(outfits_df)} outfit items ")
     
-    print(f"\ngenerating recommendation for genres {USER_GENRE_INPUT}...")
-    recommended_outfit = recommend_outfit(conditions, outfits_df, USER_GENRE_INPUT)
+#     print(f"\ngenerating recommendation for genres {USER_GENRE_INPUT}...")
+#     recommended_outfit = recommend_outfit(conditions, outfits_df, USER_GENRE_INPUT)
     
-    # 3. Output
-    print("\n--- OUTFIT RAHHHH ---")
-    if "Error" in recommended_outfit or "Message" in recommended_outfit:
-        print(recommended_outfit)
-    else:
-        for category, item in recommended_outfit.items():
-            print(f"  - {category.capitalize()}: {item}")
-    print("-------------------------------")
+#     # 3. Output
+#     print("\n--- OUTFIT RAHHHH ---")
+#     if "Error" in recommended_outfit or "Message" in recommended_outfit:
+#         print(recommended_outfit)
+#     else:
+#         for category, item in recommended_outfit.items():
+#             print(f"  - {category.capitalize()}: {item}")
+#     print("-------------------------------")
