@@ -359,14 +359,36 @@
             const weatherJSON = await fetchWeatherForecast();
             const catalogJSON = await fetchCatalog();
             const checkedGenres = document.querySelectorAll('input[type="checkbox"]:checked');
+            top_bottom_or_full = '';
+            layer = '';
+            shoes = '';
+            accessories = '';
+            weather_specific = '';
             const outfit = window.generate_outfit(weatherJSON, catalogJSON, timePresetField.value, checkedGenres);
+            if (!('full-body' in outfit)) {
+                top_bottom_or_full = `<li>Top: ${outfit['top']}</li><li>Bottom: ${outfit['bottom']}</li>`;
+            }else{
+                top_bottom_or_full = `<li>Full Body: ${outfit['full-body']}</li>`;
+            }
+            if ('layer' in outfit){
+                layer = `<li>Layer: ${outfit['layer']}</li>`;
+            }
+            if ('shoes' in outfit){
+                shoes = `<li>Shoes: ${outfit['shoes']}</li>`;
+            }
+            if ('accessories' in outfit){
+                accessories = `<li>Accessories: ${outfit['accessories']}</li>`;
+            }
+            if ('weather_specific' in outfit){
+                weather_specific = `<li>Weather Specific: ${outfit['weather_specific']}</li>`;
+            }
             resultsArea.innerHTML = `<div class="body"><h3>Results:</h3>
                 <list class="text">
-                    <li>Top: ${outfit['top']}</li>
-                    <li>Bottom: ${outfit['bottom']}</li>
-                    <li>Layer: ${outfit['layer']}</li>
-                    <li>Footwear: ${outfit['shoes']}</li>
-                    <li>Accessories: ${outfit['weather-specific']}</li>
+                    ${top_bottom_or_full}
+                    ${layer}
+                    ${shoes}
+                    ${accessories}
+                    ${weather_specific}
                 </list></div>`;
         }
 
