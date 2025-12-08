@@ -460,7 +460,7 @@
             }
 
             // Maybe want to use try catch for failures
-            assert(forecast && !forecast.properties && forecast.properties.periods && forecast.properties.periods.length > 0);
+            //assert(forecast && !forecast.properties && forecast.properties.periods && forecast.properties.periods.length > 0);
             
             const firstPeriod = forecast.properties.periods[0];
             const firstStartTime = new Date(firstPeriod.startTime);
@@ -468,7 +468,7 @@
         
             const hourDifference = targetHour - firstHour;
             const targetIndex = hourDifference;
-            assert(targetIndex >= 0 && targetIndex < forecast.properties.periods.length);
+            //assert(targetIndex >= 0 && targetIndex < forecast.properties.periods.length);
 
             return forecast.properties.periods[targetIndex];
         }
