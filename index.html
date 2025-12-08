@@ -173,13 +173,6 @@
             box-shadow: 0 0 0 3px rgba(14, 165, 233, .15);
         }
 
-        /* TWO-COLUMN GRID FOR INPUTS (TIME AND PRESET) */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: .5rem;
-        }
-
         /* CHECKBOXES FOR GENRES */
         .checkbox {
             display: flex;
@@ -253,6 +246,8 @@
             backdrop-filter: blur(6px);
         }
     </style>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.10.3/core.css">
+    <script type="module" src="https://pyscript.net/releases/2025.10.3/core.js"></script>
 </head>
 
 <body>
@@ -280,19 +275,16 @@
                                 <div class="muted" style="margin-top:.25rem;">Uses API for zipcode.</div>
                             </div>
 
-                            <!--TIME INPUT AND PRESET DROPDOWN-->
+                            <!--TIME PRESET DROPDOWN ONLY-->
                             <div style="margin:.9rem 0;">
-                                <label for="time">What time are you going out today?</label>
-                                <div class="grid-2" style="margin-top:.35rem;">
-                                    <input id="time" name="time" type="time" required>
-                                    <select id="timePreset">
-                                        <option value="" selected disabled>Select time</option>
-                                        <option value="morning">Morning</option>
-                                        <option value="afternoon">Afternoon</option>
-                                        <option value="evening">Evening</option>
-                                        <option value="late">Late Night</option>
-                                    </select>
-                                </div>
+                                <label for="timePreset">What time are you going out today?</label>
+                                <select id="timePreset" style="margin-top:.35rem;">
+                                    <option value="" selected disabled>Select time</option>
+                                    <option value="morning">Morning</option>
+                                    <option value="afternoon">Afternoon</option>
+                                    <option value="evening">Evening</option>
+                                    <option value="late">Late Night</option>
+                                </select>
                             </div>
 
                             <!--GENRE CHECKBOXES-->
@@ -338,30 +330,204 @@
         const prefsForm = document.getElementById('prefsForm');
         const resultsArea = document.getElementById('resultsArea');
         const regenBtnBottom = document.getElementById('regenBtnBottom');
-
+        const zipcodeField = document.getElementById('zipcode');
+        const timePresetField = document.getElementById('timePreset');
+        
         // When user submits the form
-        prefsForm.addEventListener('submit', e => {
+        prefsForm.addEventListener('submit', async e => {
             e.preventDefault();
             regenBtnBottom.disabled = false;
             clearResults();
-            showWaitingState();
+            getResults();
         });
 
-        // Handles "Regenerate" click
-        function handleRegenerate() { clearResults(); showWaitingState(); }
         regenBtnBottom.addEventListener('click', handleRegenerate);
 
+        // Handles "Regenerate" click
+        function handleRegenerate() {
+            clearResults();
+            getResults();
+        }
+
         // Clears existing outfits
-        function clearResults() { resultsArea.innerHTML = ''; }
+        function clearResults() {
+            resultsArea.innerHTML = '';
+        }
+
+        async function getResults() {
+            showWaitingState();
+
+            const timeOfDay = timePresetField.value;
+            const weatherJSON = await fetchWeatherForecast(timeOfDay);
+            const catalogJSON = await fetchCatalog();
+            const checkedGenres = document.querySelectorAll('input[type="checkbox"]:checked');
+            top_bottom_or_full = '';
+            layer = '';
+            shoes = '';
+            accessories = '';
+            weather_specific = '';
+            const outfit = window.generate_outfit(weatherJSON, catalogJSON, timePresetField.value, checkedGenres);
+            if (!('full-body' in outfit)) {
+                top_bottom_or_full = `<li>Top: ${outfit['top']}</li><li>Bottom: ${outfit['bottom']}</li>`;
+            }else{
+                top_bottom_or_full = `<li>Full Body: ${outfit['full-body']}</li>`;
+            }
+            if ('layer' in outfit){
+                layer = `<li>Layer: ${outfit['layer']}</li>`;
+            }
+            if ('shoes' in outfit){
+                shoes = `<li>Shoes: ${outfit['shoes']}</li>`;
+            }
+            if ('accessories' in outfit){
+                accessories = `<li>Accessories: ${outfit['accessories']}</li>`;
+            }
+            if ('weather_specific' in outfit){
+                weather_specific = `<li>Weather Specific: ${outfit['weather_specific']}</li>`;
+            }
+            resultsArea.innerHTML = `<div class="body"><h3>Results:</h3>
+                <list class="text">
+                    ${top_bottom_or_full}
+                    ${layer}
+                    ${shoes}
+                    ${accessories}
+                    ${weather_specific}
+                </list></div>`;
+        }
+
+        //
+        // NOTE: Our zipcodes are _specific_ to north america, international
+        // zipcodes will fail (see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+        //
+        async function getLatLngByZipcode(zipcode) {
+            try {
+                const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&postalcode=${zipcode}&countrycodes=us&limit=1`);
+                const data = await response.json();
+
+                if (data && data.length > 0) {
+                    return {
+                        latitude: parseFloat(data[0].lat),
+                        longitude: parseFloat(data[0].lon)
+                    };
+                }
+                else {
+                    throw new Error('Zip code not found');
+                }
+            }
+            catch (error) {
+                console.error('Geocoding error:', error);
+                return null;
+            }
+        }
+
+        async function convertZipCodeToCoordinates() {
+            const zip = zipcodeField.value;
+            const coords = await getLatLngByZipcode(zip);
+            return coords;
+        }
+
+        async function getWeatherForecastFromLatLng(latitude, longitude) 
+        {
+            try {
+                const pointsResponse = await fetch(`https://api.weather.gov/points/${latitude},${longitude}`);
+                if(!pointsResponse.ok) {
+                    throw new Error('Points API response was not ok');
+                }
+                
+                const pointsData = await pointsResponse.json();
+                
+                const forecastResponse = await fetch(pointsData.properties.forecastHourly);
+                if(!forecastResponse.ok) {
+                    throw new Error('Forecast API response was not ok');
+                }
+                
+                const forecastData = await forecastResponse.json();
+                return forecastData;
+            }
+            catch (error) {
+                console.error('Error fetching weather:', error);
+                return null;
+            }
+        }
+
+        function getTargetWeather(forecast, timeOfDay) {
+            var targetHour;
+            switch(timeOfDay) {
+                case "morning": targetHour = 8; break;
+                case "afternoon": targetHour = 12; break;
+                case "evening": targetHour = 17; break;
+                case "late": targetHour = 20; break;
+                default: targetHour = 12; // default to afternoon
+            }
+
+            // Maybe want to use try catch for failures
+            console.assert(forecast && forecast.properties && forecast.properties.periods && forecast.properties.periods.length > 0);
+            
+            const firstPeriod = forecast.properties.periods[0];
+            const firstStartTime = new Date(firstPeriod.startTime);
+            const firstHour = firstStartTime.getHours();
+        
+            const hourDifference = targetHour - firstHour;
+            const targetIndex = hourDifference;
+            
+            console.assert(targetIndex >= 0 && targetIndex < forecast.properties.periods.length);
+
+            return forecast.properties.periods[targetIndex];
+        }
+
+        async function fetchWeatherForecast(timeOfDay) {
+            const coords = await convertZipCodeToCoordinates();
+            const forecast = await getWeatherForecastFromLatLng(coords.latitude, coords.longitude);
+            const weather = getTargetWeather(forecast, timeOfDay);
+
+            return weather;
+        }
+
+        async function fetchCatalog() {
+            const response = await fetch('outfits.json');
+
+            if (!response.ok) {
+                throw new Error('Could not find catalog');
+            }
+
+            const catalog = await response.json();
+            return catalog;
+        }
 
         // Placeholder message until outfit results load
         function showWaitingState() {
             const card = document.createElement('article');
             card.className = 'card';
-            card.innerHTML = `<div class="body"><h3>Waiting on generator</h3><p class="muted">We sent your preferences. When results arrive, they'll render here.</p></div>`;
+            card.innerHTML = `<div class="body"><h3>Waiting on generator</h3>
+                <p class="muted">We sent your preferences. When results arrive, 
+                    they'll render here.</p></div>`;
             resultsArea.appendChild(card);
         }
     </script>
+    <py-script>
+        from pyscript import window
+
+        def generate_outfit(weather, catalog, time, genres):
+            # TODO: Weather API only gives forecast in 12 hour intervals, follow up with team
+            now = datetime.now().astimezone()
+            if time == "morning":
+                iso = now.replace(hour=8, minute=0, second=0, microsecond=0).isoformat()
+            elif time == "afternoon":
+                iso = now.replace(hour=12, minute=0, second=0, microsecond=0).isoformat()
+            elif time == "evening":
+                iso = now.replace(hour=17, minute=0, second=0, microsecond=0).isoformat()
+            elif time == "late":
+                iso = now.replace(hour=20, minute=0, second=0, microsecond=0).isoformat()
+
+            conditions = preprocess_weather_data(weather.to_py(), iso)
+
+            outfits_df = preprocess_outfits_data(catalog.to_py())
+
+            genres_list = [genre.value for genre in genres]
+            return recommend_outfit(conditions, outfits_df, genres_list)
+
+        window.generate_outfit = generate_outfit
+    </py-script>
+    <script type="py" src="./generator.py" config='{"packages": ["pandas"]}'></script>
 </body>
 
 <!--FOOTER SECTION WITH TEAM NAMES-->
