@@ -12,7 +12,7 @@
             },
             "wind": [true, false],
             "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 2,
@@ -26,49 +26,49 @@
             },
             "wind": [true, false],
             "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 3,
             "name": "Tank Top",
             "category": "top",
             "genre": ["casual", "comfy", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "rain", "wind"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
-                "min": 70,
+                "min": 75,
                 "max": 120
             },
             "wind": [true, false],
             "rain": false,
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["afternoon"]
         },
         {
             "id": 4,
             "name": "Short Sleve Polo Shirt",
             "category": "top",
             "genre": ["casual", "fancy", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "rain", "wind"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
-                "min": 65,
-                "max": 120
+                "min": 68,
+                "max": 105
             },
             "wind": [true, false],
-            "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 5,
             "name": "Long Sleve Polo Shirt",
             "category": "top",
             "genre": ["casual", "fancy", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "rain", "wind"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
                 "min": -60,
                 "max": 65
             },
             "wind": [true, false],
-            "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 6,
@@ -77,12 +77,12 @@
             "genre": ["casual", "fancy", "feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy", "rain", "wind"],
             "temperature_range": {
-                "min": 65,
+                "min": 68,
                 "max": 120
             },
             "wind": [true, false],
             "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 7,
@@ -92,11 +92,11 @@
             "suitable_forecasts": ["sunny", "cloudy", "rain", "wind"],
             "temperature_range": {
                 "min": -60,
-                "max": 65
+                "max": 70
             },
             "wind": [true, false],
             "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 8,
@@ -110,7 +110,7 @@
             },
             "wind": [true, false],
             "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 9,
@@ -120,11 +120,11 @@
             "suitable_forecasts": ["sunny", "cloudy", "rain", "wind"],
             "temperature_range": {
                 "min": -60,
-                "max": 65
+                "max": 50
             },
             "wind": [true, false],
             "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 10,
@@ -158,66 +158,66 @@
             "id": 12,
             "name": "Sweatshirt",
             "category": "top",
-            "genre": ["casual", "comfy", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "rain", "wind"],
+            "genre": ["comfy", "feminine", "masculine", "gender neutral"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
-                "min": -60,
-                "max": 50
+                "min": 30,
+                "max": 55
             },
             "wind": [true, false],
-            "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 13,
             "name": "Hoodie",
             "category": "top",
-            "genre": ["casual", "comfy", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "rain", "wind"],
+            "genre": ["comfy", "feminine", "masculine", "gender neutral"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
-                "min": -60,
-                "max": 50
+                "min": 30,
+                "max": 55
             },
             "wind": [true, false],
-            "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening", "late evening"]
         },
         {
             "id": 14,
             "name": "Sweater",
             "category": "top",
-            "genre": ["casual", "comfy", "fancy", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "rain", "wind"],
+            "genre": ["casual", "fancy", "feminine", "masculine", "gender neutral"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
                 "min": -60,
                 "max": 50
             },
             "wind": [true, false],
-            "rain": [true, false],
+            "rain": [false],
             "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 15,
             "name": "Cardigan",
             "category": "layer",
-            "genre": ["casual", "comfy", "fancy", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "rain", "wind"],
+            "genre": ["casual", "fancy", "feminine", "masculine", "gender neutral"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
-                "min": 50,
-                "max": 68
+                "min": 55,
+                "max": 72
             },
             "wind": [true, false],
-            "rain": [true, false],
+            "rain": [false],
             "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 16,
             "name": "Crop Top",
             "category": "top",
-            "genre": ["casual", "comfy", "feminine", "masculine", "gender neutral"],
+            "genre": ["casual", "feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy", "rain", "wind"],
             "temperature_range": {
-                "min": 70,
+                "min": 72,
                 "max": 120
             },
             "wind": [true, false],
@@ -228,11 +228,11 @@
             "id": 17,
             "name": "Jeans",
             "category": "bottom",
-            "genre": ["casual", "comfy", "feminine", "masculine", "gender neutral"],
+            "genre": ["casual", "feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
-                "min": 30,
-                "max": 65
+                "min": 35,
+                "max": 70
             },
             "wind": [true, false],
             "rain": [false],
@@ -242,10 +242,10 @@
             "id": 18,
             "name": "Shorts",
             "category": "bottom",
-            "genre": ["casual", "comfy", "feminine", "masculine", "gender neutral"],
+            "genre": ["casual", "feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy", "wind", "rain"],
             "temperature_range": {
-                "min": 70,
+                "min": 72,
                 "max": 120
             },
             "wind": [true, false],
@@ -257,14 +257,14 @@
             "name": "Skirt",
             "category": "bottom",
             "genre": ["fancy", "feminine", "casual", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "rain"],
+            "suitable_forecasts": ["sunny", "cloudy"],
             "temperature_range": {
-                "min": 65,
+                "min": 70,
                 "max": 120
             },
             "wind": [false],
-            "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "rain": [false],
+            "time": ["afternoon", "evening"]
         },
         {
             "id": 20,
@@ -273,8 +273,8 @@
             "genre": ["fancy", "feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy", "wind", "rain"],
             "temperature_range": {
-                "min": -60,
-                "max": 66
+                "min": 40,
+                "max": 70
             },
             "wind": [true, false],
             "rain": [true, false],
@@ -288,11 +288,11 @@
             "suitable_forecasts": ["sunny", "cloudy", "wind", "rain"],
             "temperature_range": {
                 "min": 30,
-                "max": 80
+                "max": 75
             },
             "wind": [true, false],
             "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 22,
@@ -301,25 +301,25 @@
             "genre": ["casual", "comfy", "feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy", "wind", "rain"],
             "temperature_range": {
-                "min": 40,
+                "min": 45,
                 "max": 75
             },
             "wind": [true, false],
             "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 23,
             "name": "Cargo Pants",
             "category": "bottom",
             "genre": ["casual", "masculine", "feminine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "wind", "rain"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
                 "min": 40,
                 "max": 80
             },
             "wind": [true, false],
-            "rain": [true, false],
+            "rain": [false],
             "time": ["morning", "afternoon", "evening"]
         },
         {
@@ -327,104 +327,104 @@
             "name": "Capris",
             "category": "bottom",
             "genre": ["casual", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "wind", "rain"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
-                "min": 40,
+                "min": 45,
                 "max": 90
             },
             "wind": [true, false],
-            "rain": [true, false],
+            "rain": [false],
             "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 25,
             "name": "Overalls",
             "category": "bottom",
-            "genre": ["casual", "comfy", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "wind", "rain"],
+            "genre": ["casual", "feminine", "masculine", "gender neutral"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
                 "min": 50,
                 "max": 80
             },
             "wind": [true, false],
-            "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "rain": [false],
+            "time": ["morning", "afternoon"]
         },
         {
             "id": 26,
             "name": "Dress",
             "category": "full-body",
-            "genre": ["fancy", "casual", "feminine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "rain"],
+            "genre": ["fancy", "feminine", "gender neutral"],
+            "suitable_forecasts": ["sunny", "cloudy"],
             "temperature_range": {
-                "min": 30,
+                "min": 65,
                 "max": 120
             },
             "wind": [false],
-            "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 27,
             "name": "Jumpsuit",
             "category": "full-body",
-            "genre": ["fancy", "casual", "feminine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "wind", "rain"],
+            "genre": ["fancy", "feminine", "gender neutral"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
                 "min": 60,
                 "max": 85
             },
             "wind": [true, false],
-            "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 28,
             "name": "Romper",
             "category": "full-body",
-            "genre": ["casual", "fancy", "feminine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "wind", "rain"],
-            "temperature_range": {
-                "min": 70,
-                "max": 120
-            },
-            "wind": [true, false],
-            "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
-        },
-        {
-            "id": 29,
-            "name": "Sneakers",
-            "category": "shoes",
-            "genre": ["casual", "comfy", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "wind", "rain"],
-            "temperature_range": {
-                "min": 30,
-                "max": 120
-            },
-            "wind": [true, false],
-            "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
-        },
-        {
-            "id": 30,
-            "name": "Sandals",
-            "category": "shoes",
-            "genre": ["casual", "comfy", "fancy", "feminine", "masculine", "gender neutral"],
+            "genre": ["fancy", "feminine", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
                 "min": 70,
                 "max": 120
             },
             "wind": [true, false],
-            "rain": [true, false],
+            "rain": [false],
             "time": ["morning", "afternoon", "evening"]
+        },
+        {
+            "id": 29,
+            "name": "Sneakers",
+            "category": "shoes",
+            "genre": ["casual", "feminine", "masculine", "gender neutral"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind"],
+            "temperature_range": {
+                "min": 30,
+                "max": 120
+            },
+            "wind": [true, false],
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening", "late night"]
+        },
+        {
+            "id": 30,
+            "name": "Sandals",
+            "category": "shoes",
+            "genre": ["casual", "fancy", "feminine", "masculine", "gender neutral"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind"],
+            "temperature_range": {
+                "min": 75,
+                "max": 120
+            },
+            "wind": [true, false],
+            "rain": [false],
+            "time": ["afternoon"]
         },
         {
             "id": 31,
             "name": "Snow Boots",
             "category": "shoes",
-            "genre": ["casual", "comfy", "feminine", "masculine", "gender neutral"],
+            "genre": ["casual", "feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["snow"],
             "temperature_range": {
                 "min": -60,
@@ -438,7 +438,7 @@
             "id": 32,
             "name": "Rain Boots",
             "category": "shoes",
-            "genre": ["casual", "comfy", "feminine", "masculine", "gender neutral"],
+            "genre": ["casual", "feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["rain"],
             "temperature_range": {
                 "min": 30,
@@ -452,15 +452,15 @@
             "id": 33,
             "name": "Flats",
             "category": "shoes",
-            "genre": ["fancy", "feminine", "casual", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "rain", "wind"],
+            "genre": ["fancy", "feminine", "gender neutral"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
                 "min": 60,
                 "max": 90
             },
             "wind": [true, false],
-            "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 34,
@@ -474,27 +474,27 @@
             },
             "wind": [true, false],
             "rain": [false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["afternoon", "evening", "late night"]
         },
         {
             "id": 35,
             "name": "Loafers",
             "category": "shoes",
-            "genre": ["fancy", "casual", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "wind", "rain"],
+            "genre": ["casual", "feminine", "masculine", "gender neutral"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
                 "min": 45,
                 "max": 85
             },
             "wind": [true, false],
-            "rain": [true, false],
+            "rain": [false],
             "time": ["morning", "afternoon", "evening"]
         },
         {
             "id": 36,
             "name": "Dress Shoes",
             "category": "shoes",
-            "genre": ["fancy", "casual", "masculine", "feminine", "gender neutral"],
+            "genre": ["fancy", "masculine", "feminine", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy"],
             "temperature_range": {
                 "min": 45,
@@ -502,7 +502,7 @@
             },
             "wind": [true, false],
             "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["afternoon", "evening"]
         },
         {
             "id": 37,
@@ -516,21 +516,21 @@
             },
             "wind": [true, false],
             "rain": [false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["afternoon"]
         },
         {
             "id": 39,
             "name": "Scarf",
             "category": "accessories",
-            "genre": ["casual", "fancy", "feminine", "masculine", "gender neutral"],
+            "genre": ["feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["cloudy", "wind", "snow"],
             "temperature_range": {
                 "min": -60,
-                "max": 60
+                "max": 40
             },
             "wind": [true, false],
             "rain": [false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "evening", "late night"]
         },
         {
             "id": 40,
@@ -540,17 +540,17 @@
             "suitable_forecasts": ["snow", "wind"],
             "temperature_range": {
                 "min": -60,
-                "max": 50
+                "max": 30
             },
             "wind": [true, false],
             "rain": [false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 41,
             "name": "Sunglasses",
             "category": "accessories",
-            "genre": ["casual", "fancy", "feminine", "masculine", "gender neutral"],
+            "genre": ["feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["sunny"],
             "temperature_range": {
                 "min": 0,
@@ -564,7 +564,7 @@
             "id": 42,
             "name": "Umbrella",
             "category": "weather-specific",
-            "genre": ["rain", "feminine", "masculine", "gender neutral"],
+            "genre": ["feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["rain"],
             "temperature_range": {
                 "min": -60,
@@ -572,7 +572,7 @@
             },
             "wind": [true, false],
             "rain": [true],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 43,
@@ -610,7 +610,7 @@
             "suitable_forecasts": ["snow", "wind"],
             "temperature_range": {
                 "min": -60,
-                "max": 40
+                "max": 32
             },
             "wind": [true, false],
             "rain": [false],
@@ -624,11 +624,11 @@
             "suitable_forecasts": ["snow", "wind", "cloudy"],
             "temperature_range": {
                 "min": -60,
-                "max": 55
+                "max": 30
             },
             "wind": [true, false],
             "rain": [false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 47,
@@ -638,17 +638,17 @@
             "suitable_forecasts": ["snow", "wind"],
             "temperature_range": {
                 "min": -60,
-                "max": 50
+                "max": 30
             },
             "wind": [true, false],
-            "rain": [false],
-            "time": ["morning", "afternoon", "evening"]
+            "rain": [true, false],
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 48,
             "name": "Light Jacket",
             "category": "layer",
-            "genre": ["casual", "comfy", "feminine", "masculine", "gender neutral"],
+            "genre": ["feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
                 "min": 55,
@@ -656,7 +656,7 @@
             },
             "wind": [true, false],
             "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "evening", "late night"]
         },
         {
             "id": 49,
@@ -670,21 +670,21 @@
             },
             "wind": [true, false],
             "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 50,
             "name": "Windbreaker",
             "category": "layer",
-            "genre": ["casual", "feminine", "masculine", "gender neutral"],
+            "genre": ["feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["wind", "cloudy"],
             "temperature_range": {
                 "min": 50,
                 "max": 80
             },
-            "wind": [true, false],
-            "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "wind": [true],
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 51,
@@ -698,13 +698,13 @@
             },
             "wind": [true, false],
             "rain": [true],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 52,
             "name": "Denim Jacket",
             "category": "layer",
-            "genre": ["casual", "feminine", "masculine", "gender neutral"],
+            "genre": ["feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
                 "min": 50,
@@ -712,13 +712,13 @@
             },
             "wind": [true, false],
             "rain": [false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "evening"]
         },
         {
             "id": 53,
             "name": "Leather Jacket",
             "category": "layer",
-            "genre": ["fancy", "casual", "masculine", "feminine", "gender neutral"],
+            "genre": ["masculine", "feminine", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
                 "min": 45,
@@ -726,7 +726,7 @@
             },
             "wind": [true, false],
             "rain": [false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "evening", "late night"]
         },
         {
             "id": 54,
@@ -740,35 +740,35 @@
             },
             "wind": [true, false],
             "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "afternoon"]
         },
         {
             "id": 55,
             "name": "Coat",
             "category": "layer",
-            "genre": ["fancy", "casual", "gender neutral"],
+            "genre": ["masculine", "feminine", "gender neutral"],
             "suitable_forecasts": ["cloudy", "snow", "wind"],
             "temperature_range": {
                 "min": -60,
-                "max": 50
+                "max": 32
             },
             "wind": [true, false],
             "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 56,
             "name": "Puffer Jacket",
             "category": "layer",
-            "genre": ["casual", "masculine", "feminine", "gender neutral"],
+            "genre": ["masculine", "feminine", "gender neutral"],
             "suitable_forecasts": ["snow", "wind"],
             "temperature_range": {
                 "min": -60,
-                "max": 45
+                "max": 35
             },
             "wind": [true, false],
             "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 57,
@@ -782,14 +782,14 @@
             },
             "wind": [true, false],
             "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "time": ["afternoon", "evening"]
         },
         {
             "id": 58,
             "name": "Fleece Jacket",
             "category": "layer",
-            "genre": ["casual", "comfy", "masculine", "feminine", "gender neutral"],
-            "suitable_forecasts": ["cloudy", "wind"],
+            "genre": ["masculine", "feminine", "gender neutral"],
+            "suitable_forecasts": ["cloudy", "wind", "sunny"],
             "temperature_range": {
                 "min": 30,
                 "max": 60
@@ -797,6 +797,48 @@
             "wind": [true, false],
             "rain": [false],
             "time": ["morning", "afternoon", "evening"]
+        },
+        {
+            "id": 59,
+            "name": "Thermal Long Sleeve Shirt",
+            "category": "top",
+            "genre": ["comfy", "casual", "feminine", "masculine", "gender neutral"], 
+            "suitable_forecasts": ["cold", "cloudy", "sunny"],
+            "temperature_range":{
+                "min": 32,
+                "max": 55
+            },
+            "wind": [true],
+            "rain": [false],
+            "time": ["morning", "evening", "late night"]
+        },
+        {
+            "id": 60,
+            "name": "Waterproof Shoes",
+            "category": ["shoes"],
+            "genre": ["casual", "masculine", "feminine", "gender neutral"],
+            "suitable_forecasts": ["rain", "snow"],
+            "temperature_range": {
+                "min": -60,
+                "max": 120
+            },
+            "wind":[true, false],
+            "rain": [true],
+            "time": ["morning", "afternoon", "evening", "late night"]
+        },
+        {
+            "id": 61,
+            "name": "Thermal Joggers",
+            "category": "bottom",
+            "genre": ["comfy", "casual", "gender neutral", "masculine", "feminine"],
+            "suitable_forecasts": ["windy", "cloudy", "sunny"],
+            "temperature_range": {
+                "min": 20,
+                "max": 50
+            },
+            "wind": [true],
+            "rain": [false],
+            "time": ["morning", "evening", "late night"]
         }
     ]
 }
