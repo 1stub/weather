@@ -2,37 +2,24 @@ import pandas as pd
 import re
 from datetime import datetime
 
-def preprocess_weather_data(weather_data: dict, user_time_str: str) -> dict:
+def preprocess_weather_data(period: dict, user_time_str: str) -> dict:   
     try:
+        period_start = datetime.fromisoformat(period['startTime'].replace('Z', '+00:00'))
+        hour = period_start.hour
         
-        # make datetime objects for each period start time
-        start_times = [
-            datetime.fromisoformat(t) 
-            for t in weather_data['time']['startValidTime']
-        ]
-
-        user_dt = datetime.fromisoformat(user_time_str)
+        if 5 <= hour < 12:
+            period_name = "Morning"
+        elif 12 <= hour < 17:
+            period_name = "Afternoon"
+        elif 17 <= hour < 21:
+            period_name = "Evening"
+        else:
+            period_name = "Night"
         
-        # finds the latest period that starts before or at user_dt
-        period_index = 0
-        for i, start_time in enumerate(start_times):
-            if user_dt >= start_time:
-                period_index = i #correct start time index in json file
-            else:
-                break
-
-        period_name = weather_data['time']['startPeriodName'][period_index]
-
-        # weather data for that period
-        period_data = weather_data['data']
+        temperature = int(period['temperature'])
+        weather_short_desc = period['shortForecast'].lower()
         
-        # get temp
-        temperature = int(period_data['temperature'][period_index])
-        
-        # main forecast keyword
-        weather_short_desc = period_data['weather'][period_index].lower()
-        
-        forecast_condition = "cloudy" # default to cloudy,,,, 
+        forecast_condition = "cloudy"
         if "snow" in weather_short_desc:
             forecast_condition = "snow"
         elif "rain" in weather_short_desc or "showers" in weather_short_desc or "thunderstorm" in weather_short_desc:
@@ -44,20 +31,21 @@ def preprocess_weather_data(weather_data: dict, user_time_str: str) -> dict:
         elif "windy" in weather_short_desc or "breezy" in weather_short_desc:
             forecast_condition = "wind"
 
-        # make rain boolean
         is_rainy = (forecast_condition == "rain")
-        
-        # make wind boolean
-        weather_long_desc = weather_data['data']['text'][period_index].lower()
+        weather_long_desc = period.get('detailedForecast', period['shortForecast']).lower()
         is_windy = "wind" in weather_long_desc or "gust" in weather_long_desc
-        
-        wind_speed_match = re.search(r'(\d+)\s+mph', weather_long_desc)
+ 
+        wind_speed_str = period.get('windSpeed', '').lower()
+        wind_speed_match = re.search(r'(\d+)\s+mph', wind_speed_str)
         if wind_speed_match:
             wind_speed = int(wind_speed_match.group(1))
-            if wind_speed >= 15: #wind speed threshold to be "windy"
+            if wind_speed >= 15:  # Arbitrary thresh for actually being windy
                 is_windy = True
                 if forecast_condition not in ["rain", "snow"]:
-                    forecast_condition = "wind" 
+                    forecast_condition = "wind"
+        
+        if "wind" in weather_short_desc or "breezy" in weather_short_desc:
+            is_windy = True
 
         return {
             "period_name": period_name,
