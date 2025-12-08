@@ -680,11 +680,11 @@
             "suitable_forecasts": ["wind", "cloudy"],
             "temperature_range": {
                 "min": 50,
-                "max": 80
+                "max": 70
             },
-            "wind": [true, false],
-            "rain": [true, false],
-            "time": ["morning", "afternoon", "evening"]
+            "wind": [true],
+            "rain": [false],
+            "time": ["morning", "afternoon", "evening", "late night"]
         },
         {
             "id": 51,
@@ -766,7 +766,7 @@
                 "min": -60,
                 "max": 45
             },
-            "wind": [true, false],
+            "wind": [true],
             "rain": [true, false],
             "time": ["morning", "afternoon", "evening"]
         },
