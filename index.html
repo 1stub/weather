@@ -356,7 +356,9 @@
 
         async function getResults() {
             showWaitingState();
-            const weatherJSON = await fetchWeatherForecast();
+
+            const timeOfDay = timePresetField.value;
+            const weatherJSON = await fetchWeatherForecast(timeOfDay);
             const catalogJSON = await fetchCatalog();
             const checkedGenres = document.querySelectorAll('input[type="checkbox"]:checked');
             top_bottom_or_full = '';
@@ -423,16 +425,23 @@
             return coords;
         }
 
-        async function getWeatherFromLatLng(latitude, longitude) {
+        async function getWeatherForecastFromLatLng(latitude, longitude) 
+        {
             try {
-                const response = await fetch(`https://forecast.weather.gov/MapClick.php?lat=${latitude}&lon=${longitude}&unit=0&lg=english&FcstType=json`);
-
-                if (!response.ok) {
-                    throw new Error('Weather API response was not ok');
+                const pointsResponse = await fetch(`https://api.weather.gov/points/${latitude},${longitude}`);
+                if(!pointsResponse.ok) {
+                    throw new Error('Points API response was not ok');
                 }
-
-                const json = await response.json();
-                return json;
+                
+                const pointsData = await pointsResponse.json();
+                
+                const forecastResponse = await fetch(pointsData.properties.forecastHourly);
+                if(!forecastResponse.ok) {
+                    throw new Error('Forecast API response was not ok');
+                }
+                
+                const forecastData = await forecastResponse.json();
+                return forecastData;
             }
             catch (error) {
                 console.error('Error fetching weather:', error);
@@ -440,9 +449,34 @@
             }
         }
 
-        async function fetchWeatherForecast() {
+        function getTargetWeather(forecast, timeOfDay) {
+            var targetHour;
+            switch(timeOfDay) {
+                case "morning": targetHour = 8; break;
+                case "afternoon": targetHour = 12; break;
+                case "evening": targetHour = 17; break;
+                case "late": targetHour = 20; break;
+                default: targetHour = 12; // default to afternoon
+            }
+
+            // Maybe want to use try catch for failures
+            assert(forecast && !forecast.properties && forecast.properties.periods && forecast.properties.periods.length > 0);
+            
+            const firstPeriod = forecast.properties.periods[0];
+            const firstStartTime = new Date(firstPeriod.startTime);
+            const firstHour = firstStartTime.getHours();
+        
+            const hourDifference = targetHour - firstHour;
+            const targetIndex = hourDifference;
+            assert(targetIndex >= 0 && targetIndex < forecast.properties.periods.length);
+
+            return forecast.properties.periods[targetIndex];
+        }
+
+        async function fetchWeatherForecast(timeOfDay) {
             const coords = await convertZipCodeToCoordinates();
-            const weather = await getWeatherFromLatLng(coords.latitude, coords.longitude);
+            const forecast = await getWeatherForecastFromLatLng(coords.latitude, coords.longitude);
+            const weather = getTargetWeather(forecast, timeOfDay);
 
             return weather;
         }
