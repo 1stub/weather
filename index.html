@@ -469,7 +469,7 @@
             const firstHour = firstStartTime.getHours();
         
             const hourDifference = targetHour - firstHour;
-            const targetIndex = hourDifference;
+            var targetIndex = hourDifference;
 
             // If a time is selected earlier than timeOfDay, default to current time
             if(targetIndex < 0) {
