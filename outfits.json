@@ -19,7 +19,7 @@
             "name": "Long Sleve T-Shirt",
             "category": "top",
             "genre": ["casual", "comfy", "feminine", "masculine", "gender neutral"], 
-            "suitable_forecasts": ["sunny", "cloudy", "rain", "wind"],
+            "suitable_forecasts": ["sunny", "cloudy", "rain", "wind", "snow"],
             "temperature_range": {
                 "min": -60,
                 "max": 65
@@ -39,7 +39,7 @@
                 "max": 120
             },
             "wind": [true, false],
-            "rain": false,
+            "rain": [false],
             "time": ["afternoon"]
         },
         {
@@ -61,7 +61,7 @@
             "name": "Long Sleve Polo Shirt",
             "category": "top",
             "genre": ["casual", "fancy", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "wind"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind", "snow"],
             "temperature_range": {
                 "min": -60,
                 "max": 65
@@ -89,7 +89,7 @@
             "name": "Long Sleeve Button-Up Shirt",
             "category": "top",
             "genre": ["casual", "fancy", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "rain", "wind"],
+            "suitable_forecasts": ["sunny", "cloudy", "rain", "wind", "snow"],
             "temperature_range": {
                 "min": -60,
                 "max": 70
@@ -117,7 +117,7 @@
             "name": "Long Sleeve Blouse",
             "category": "top",
             "genre": ["fancy", "feminine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "rain", "wind"],
+            "suitable_forecasts": ["sunny", "cloudy", "rain", "wind", "snow"],
             "temperature_range": {
                 "min": -60,
                 "max": 50
@@ -145,7 +145,7 @@
             "name": "Long Sleeve Henley Shirt",
             "category": "top",
             "genre": ["casual", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "rain", "wind"],
+            "suitable_forecasts": ["sunny", "cloudy", "rain", "wind", "snow"],
             "temperature_range": {
                 "min": -60,
                 "max": 65
@@ -159,7 +159,7 @@
             "name": "Sweatshirt",
             "category": "top",
             "genre": ["comfy", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "wind"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind", "snow"],
             "temperature_range": {
                 "min": 30,
                 "max": 55
@@ -173,7 +173,7 @@
             "name": "Hoodie",
             "category": "top",
             "genre": ["comfy", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "wind"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind", "snow"],
             "temperature_range": {
                 "min": 30,
                 "max": 55
@@ -187,7 +187,7 @@
             "name": "Sweater",
             "category": "top",
             "genre": ["casual", "fancy", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "wind"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind", "snow"],
             "temperature_range": {
                 "min": -60,
                 "max": 50
@@ -229,7 +229,7 @@
             "name": "Jeans",
             "category": "bottom",
             "genre": ["casual", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "wind"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind", "snow"],
             "temperature_range": {
                 "min": 25,
                 "max": 70
@@ -299,7 +299,7 @@
             "name": "Joggers",
             "category": "bottom",
             "genre": ["casual", "comfy", "feminine", "masculine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "wind", "rain"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind", "rain", "snow"],
             "temperature_range": {
                 "min": 45,
                 "max": 75
@@ -313,7 +313,7 @@
             "name": "Cargo Pants",
             "category": "bottom",
             "genre": ["casual", "masculine", "feminine", "gender neutral"],
-            "suitable_forecasts": ["sunny", "cloudy", "wind"],
+            "suitable_forecasts": ["sunny", "cloudy", "wind", "snow"],
             "temperature_range": {
                 "min": 40,
                 "max": 80
@@ -803,7 +803,7 @@
             "name": "Thermal Long Sleeve Shirt",
             "category": "top",
             "genre": ["comfy", "casual", "feminine", "masculine", "gender neutral"], 
-            "suitable_forecasts": ["cold", "cloudy", "sunny"],
+            "suitable_forecasts": ["cloudy", "sunny", "snow"],
             "temperature_range":{
                 "min": 32,
                 "max": 55
@@ -831,7 +831,7 @@
             "name": "Thermal Joggers",
             "category": "bottom",
             "genre": ["comfy", "casual", "gender neutral", "masculine", "feminine"],
-            "suitable_forecasts": ["wind", "cloudy", "sunny"],
+            "suitable_forecasts": ["wind", "cloudy", "sunny", "snow"],
             "temperature_range": {
                 "min": 0,
                 "max": 50
