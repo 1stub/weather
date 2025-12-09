@@ -231,7 +231,7 @@
             "genre": ["casual", "feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
-                "min": 25,
+                "min": -60,
                 "max": 70
             },
             "wind": [true, false],
@@ -259,7 +259,7 @@
             "genre": ["fancy", "feminine", "casual", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy"],
             "temperature_range": {
-                "min": 65,
+                "min": 70,
                 "max": 120
             },
             "wind": [false],
@@ -273,7 +273,7 @@
             "genre": ["fancy", "feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy", "wind", "rain"],
             "temperature_range": {
-                "min": 40,
+                "min": -60,
                 "max": 70
             },
             "wind": [true, false],
@@ -287,7 +287,7 @@
             "genre": ["casual", "comfy", "feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy", "wind", "rain"],
             "temperature_range": {
-                "min": 30,
+                "min": 0,
                 "max": 75
             },
             "wind": [true, false],
@@ -301,7 +301,7 @@
             "genre": ["casual", "comfy", "feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy", "wind", "rain"],
             "temperature_range": {
-                "min": 45,
+                "min": -60,
                 "max": 75
             },
             "wind": [true, false],
@@ -315,7 +315,7 @@
             "genre": ["casual", "masculine", "feminine", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
-                "min": 40,
+                "min": -60,
                 "max": 80
             },
             "wind": [true, false],
@@ -343,7 +343,7 @@
             "genre": ["casual", "feminine", "masculine", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
-                "min": 50,
+                "min": -20,
                 "max": 80
             },
             "wind": [true, false],
@@ -371,7 +371,7 @@
             "genre": ["fancy", "feminine", "gender neutral"],
             "suitable_forecasts": ["sunny", "cloudy", "wind"],
             "temperature_range": {
-                "min": 60,
+                "min": 0,
                 "max": 85
             },
             "wind": [true, false],
@@ -815,7 +815,7 @@
         {
             "id": 60,
             "name": "Waterproof Shoes",
-            "category": "shoes",
+            "category": ["shoes"],
             "genre": ["casual", "masculine", "feminine", "gender neutral"],
             "suitable_forecasts": ["rain", "snow"],
             "temperature_range": {
@@ -831,13 +831,27 @@
             "name": "Thermal Joggers",
             "category": "bottom",
             "genre": ["comfy", "casual", "gender neutral", "masculine", "feminine"],
-            "suitable_forecasts": ["wind", "cloudy", "sunny"],
+            "suitable_forecasts": ["windy", "cloudy", "sunny"],
             "temperature_range": {
-                "min": 0,
+                "min": 20,
+                "max": 50
+            },
+            "wind": [true],
+            "rain": [false],
+            "time": ["morning", "evening", "late night"]
+        },
+        {
+            "id": 62,
+            "name": "Sweatpants",
+            "category": "bottom",
+            "genre": ["comfy", "gender neutral", "masculine", "feminine"],
+            "suitable_forecasts": ["windy", "cloudy", "sunny"],
+            "temperature_range": {
+                "min": -60,
                 "max": 50
             },
             "wind": [true, false],
-            "rain": [false],
+            "rain": [true, false],
             "time": ["morning", "afternoon", "evening", "late night"]
         }
     ]
