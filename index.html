@@ -369,9 +369,11 @@
             const outfit = window.generate_outfit(weatherJSON, catalogJSON, timePresetField.value, checkedGenres);
             if (!('full-body' in outfit)) {
                 top_bottom_or_full = `<li>Top: ${outfit['top']}</li><li>Bottom: ${outfit['bottom']}</li>`;
-            }else{
+            }
+            else{
                 top_bottom_or_full = `<li>Full Body: ${outfit['full-body']}</li>`;
             }
+            
             if ('layer' in outfit){
                 layer = `<li>Layer: ${outfit['layer']}</li>`;
             }
@@ -468,8 +470,12 @@
         
             const hourDifference = targetHour - firstHour;
             const targetIndex = hourDifference;
-            
-            console.assert(targetIndex >= 0 && targetIndex < forecast.properties.periods.length);
+
+            // If a time is selected earlier than timeOfDay, default to current time
+            if(targetIndex < 0) {
+                targetIndex = 0;
+            } 
+            console.assert(targetIndex < forecast.properties.periods.length);
 
             return forecast.properties.periods[targetIndex];
         }
@@ -507,7 +513,6 @@
         from pyscript import window
 
         def generate_outfit(weather, catalog, time, genres):
-            # TODO: Weather API only gives forecast in 12 hour intervals, follow up with team
             now = datetime.now().astimezone()
             if time == "morning":
                 iso = now.replace(hour=8, minute=0, second=0, microsecond=0).isoformat()
@@ -523,7 +528,9 @@
             outfits_df = preprocess_outfits_data(catalog.to_py())
 
             genres_list = [genre.value for genre in genres]
-            return recommend_outfit(conditions, outfits_df, genres_list)
+            rec = recommend_outfit(conditions, outfits_df, genres_list)
+
+            return rec
 
         window.generate_outfit = generate_outfit
     </py-script>
