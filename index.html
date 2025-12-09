@@ -383,8 +383,8 @@
             if ('accessories' in outfit){
                 accessories = `<li>Accessories: ${outfit['accessories']}</li>`;
             }
-            if ('weather_specific' in outfit){
-                weather_specific = `<li>Weather Specific: ${outfit['weather_specific']}</li>`;
+            if ('weather-specific' in outfit){
+                weather_specific = `<li>Weather Specific: ${outfit['weather-specific']}</li>`;
             }
             resultsArea.innerHTML = `<div class="body"><h3>Results:</h3>
                 <list class="text">
@@ -477,7 +477,8 @@
             } 
             console.assert(targetIndex < forecast.properties.periods.length);
 
-            return forecast.properties.periods[targetIndex];
+            const nfcast =  forecast.properties.periods[targetIndex]; 
+            return nfcast;
         }
 
         async function fetchWeatherForecast(timeOfDay) {
