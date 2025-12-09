@@ -114,20 +114,20 @@ def recommend_outfit(
 
     # combines filters
     candidates_df = outfits_df[temp_ok & forecast_ok & rain_ok & wind_ok & genre_ok]
-    
+
     final_outfit = {}
     # check if its a full-body item
     full_body_items = candidates_df[candidates_df['category'] == 'full-body']
-    
+    top_items = candidates_df[candidates_df['category'] == 'top']
+    bottom_items = candidates_df[candidates_df['category'] == 'bottom']
+ 
     if not full_body_items.empty:
         final_outfit['full-body'] = full_body_items.sample(1)['name'].values[0]
     else:
         # top and bottom items
-        top_items = candidates_df[candidates_df['category'] == 'top']
         if not top_items.empty:
             final_outfit['top'] = top_items.sample(1)['name'].values[0]
             
-        bottom_items = candidates_df[candidates_df['category'] == 'bottom']
         if not bottom_items.empty:
             final_outfit['bottom'] = bottom_items.sample(1)['name'].values[0]
 
@@ -140,7 +140,8 @@ def recommend_outfit(
     if not final_outfit:
         return {"Message": "No suitable outfit items found for these conditions and genres."}
 
-    return final_outfit
+    return final_outfit 
+#    return final_outfit
 
 # if __name__ == "__main__":
     
