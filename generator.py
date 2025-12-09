@@ -141,7 +141,6 @@ def recommend_outfit(
         return {"Message": "No suitable outfit items found for these conditions and genres."}
 
     return final_outfit 
-#    return final_outfit
 
 # if __name__ == "__main__":
     
